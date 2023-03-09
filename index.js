@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 
 const port = 8010;
+// import database connection file
+const db = require("./config/mongoose");
 
 // add middleware for parse data from body
 // app.use(express.urlencoded({extended:true}));
