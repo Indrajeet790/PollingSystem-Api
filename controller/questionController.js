@@ -22,3 +22,6 @@ module.exports.createQuestion = async (req, resp) => {
     return;
   }
 };
+module.exports.viewQuestion = async (req, resp) => {
+  console.log("view question");
+};

@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.post("/create", questionController.createQuestion);
 
+router.get("/view", questionController.viewQuestion);
+
 module.exports = router;
