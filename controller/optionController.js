@@ -34,3 +34,25 @@ module.exports.createOption = async (req, resp) => {
     console.log("Error:", err);
   }
 };
+//adding vote to an option for particular question
+module.exports.addVote = async (req, resp) => {
+  console.log("add vote");
+  try {
+    let id = req.params.id;
+
+    // find option if present then vote to it
+    await Option.findByIdAndUpdate(id, { $inc: { votes: 1 } });
+
+    return resp.status(200).json({
+      data: {
+        message: "Voted Successfully",
+      },
+    });
+  } catch (err) {
+    return resp.status(500).json({
+      data: {
+        message: "Internal server error",
+      },
+    });
+  }
+};
