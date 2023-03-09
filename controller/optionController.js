@@ -12,8 +12,10 @@ module.exports.createOption = async (req, resp) => {
     if (question) {
       let option = await Option.create({
         content: req.body.content,
+        votes: req.body.votes,
         question: req.params.id,
       });
+      // code for votes
       option.save();
       question.options.push(option);
       question.save();
