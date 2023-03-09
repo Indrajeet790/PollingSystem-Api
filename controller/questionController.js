@@ -1,5 +1,6 @@
 // const { create } = require("../models/questionSchema");
 const Question = require("../models/questionSchema");
+const Option = require("../models/optionSchema");
 
 // create question controller
 module.exports.createQuestion = async (req, resp) => {
@@ -13,7 +14,7 @@ module.exports.createQuestion = async (req, resp) => {
         data: { message: "question created successfully" },
       });
     } else {
-      return res.status(500).json({
+      return resp.status(500).json({
         message1: "Internal server error",
       });
     }
@@ -25,13 +26,18 @@ module.exports.createQuestion = async (req, resp) => {
 
 // view question controller
 module.exports.viewQuestion = async (req, resp) => {
-  console.log("view question");
+  // console.log("view question");
   try {
-    let question = await Question.find();
+    // populate from questionSchema file
+    let question = await Question.findById(req.params.id).populate("options");
+
     return resp.json({ question });
   } catch (err) {
-    console.log(err);
-    return;
+    return resp.status(500).json({
+      data: {
+        message: "Internal server error for viewing question",
+      },
+    });
   }
 };
 
