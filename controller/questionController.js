@@ -24,4 +24,11 @@ module.exports.createQuestion = async (req, resp) => {
 };
 module.exports.viewQuestion = async (req, resp) => {
   console.log("view question");
+  try {
+    let question = await Question.find();
+    return resp.json({ question });
+  } catch (err) {
+    console.log(err);
+    return;
+  }
 };
