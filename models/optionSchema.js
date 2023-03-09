@@ -9,10 +9,9 @@ const OptionSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Question",
     },
-
-    // votes:{
-    //   type:Number
-    // }
+    votes: {
+      type: Number,
+    },
   },
   {
     timestamps: true,
