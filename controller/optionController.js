@@ -16,6 +16,8 @@ module.exports.createOption = async (req, resp) => {
         question: req.params.id,
       });
       // code for votes
+      option.link_vote =
+        "http://127.0.01:8010/option/" + option.id + "/add_vote";
       option.save();
       question.options.push(option);
       question.save();
