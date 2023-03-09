@@ -7,4 +7,6 @@ router.post("/create", questionController.createQuestion);
 
 router.get("/view", questionController.viewQuestion);
 
+router.delete("/delete", questionController.deleteQuestion);
+
 module.exports = router;

@@ -22,6 +22,8 @@ module.exports.createQuestion = async (req, resp) => {
     return;
   }
 };
+
+// view question controller
 module.exports.viewQuestion = async (req, resp) => {
   console.log("view question");
   try {
@@ -30,5 +32,19 @@ module.exports.viewQuestion = async (req, resp) => {
   } catch (err) {
     console.log(err);
     return;
+  }
+};
+
+// delete question
+module.exports.deleteQuestion = async (req, resp) => {
+  console.log("delete question");
+
+  try {
+    let question = await Question.deleteMany();
+    return resp.json({
+      message: "all question deleted",
+    });
+  } catch (err) {
+    console.log(err);
   }
 };

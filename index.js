@@ -10,7 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // import routes
-app.use("/", require("./routes/question"));
+app.use("/", require("./routes/question.js"));
+app.use("/", require("./routes/option.js"));
 
 app.listen(port, (err) => {
   if (err) {
