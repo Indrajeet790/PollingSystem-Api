@@ -56,3 +56,35 @@ module.exports.addVote = async (req, resp) => {
     });
   }
 };
+
+//delete an option on the basis of its id
+module.exports.optionDelete = async (req, resp) => {
+  console.log("delete question");
+  try {
+    let id = req.params.id;
+    // check and find option exits or not
+    let option = await Option.findById(id);
+    console.log(option);
+
+    // if option present then check for vote
+    // if option has vote then don't delete
+    if (option.votes > 0) {
+      return resp.status(404).json({
+        data: {
+          message: "can't delete! it has vote",
+        },
+      });
+    }
+
+    // delete option from question's array
+    await Question.findByIdAndDelete(option.question, {
+      $pull: { options: id },
+    });
+  } catch (err) {
+    return resp.status(500).json({
+      data: {
+        message: "Internal server error",
+      },
+    });
+  }
+};
