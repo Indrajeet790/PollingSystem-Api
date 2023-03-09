@@ -1,4 +1,4 @@
-const { create } = require("../models/questionSchema");
+// const { create } = require("../models/questionSchema");
 const Question = require("../models/questionSchema");
 
 // create question controller
