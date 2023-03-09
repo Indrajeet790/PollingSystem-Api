@@ -1,9 +1,8 @@
 const express = require("express");
+const questionController = require("../controller/questionController");
 // create a new router objects
 const router = express.Router();
 
-router.post("/create", (req, resp) => {
-  console.log("question is created");
-});
+router.post("/create", questionController.createQuestion);
 
 module.exports = router;

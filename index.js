@@ -6,8 +6,8 @@ const port = 8010;
 const db = require("./config/mongoose");
 
 // add middleware for parse data from body
-// app.use(express.urlencoded({extended:true}));
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // import routes
 app.use("/", require("./routes/question"));
